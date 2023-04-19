@@ -13,8 +13,10 @@ class Product extends Model
     'id',
     'name',
     'id_user',
+    'id_categoria',
     'unitary_value',
     'created_at',
-  ];
 
+  ];
+  
 }
