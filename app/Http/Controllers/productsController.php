@@ -21,6 +21,7 @@ class productsController extends Controller
         'users.name AS name_user',
         'categorias.name AS name_categoria'
       ]);
+      
     return view('product.index', ['products' => $listProduct]);
   }
 
