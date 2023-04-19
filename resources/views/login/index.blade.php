@@ -12,14 +12,20 @@
 
 <body class="bg-secondary">
     <div class="container-fluid">
-        <div class="position-absolute top-50 start-50 translate-middle bg-white rounded-1 p-5 shadow-lg p-3 mb-5 rounded">
-          <h1>DeshBoard</h1>
-            <form action="" method="POST">
+
+        <div
+            class="position-absolute top-50 start-50 translate-middle bg-white rounded-1 p-5 shadow-lg p-3 mb-5 rounded">
+            @if (!empty($msg))
+                <div class="text-light bg-danger mb-3 p-2 rounded-2">{{ $msg }}</div>
+            @endif
+            <h1>DeshBoard</h1>
+            <form action="{{ route('login-store') }}" method="POST">
                 @csrf
+
                 <div class="form-group">
                     <div class="form-group">
-                        <label for="name" class="text-black">E-mail</label>
-                        <input type="text" class="form-control" name="name" id="name">
+                        <label for="email" class="text-black">E-mail</label>
+                        <input type="text" class="form-control" name="email" id="email">
                     </div>
                     <div class="form-group">
                         <label for="password" class="text-black">Senha</label>
