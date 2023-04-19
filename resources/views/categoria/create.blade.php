@@ -6,7 +6,7 @@
     <div class="container mt-5 ">
         <h1 class="text-black text-center">Registrar Categoria</h1>
         <div class="border-top my-3"></div>
-        <form action="" method="POST">
+        <form action="{{ route('categoria-store') }}" method="POST">
             @csrf
             <div class="form-group">
                 <div class="form-group">

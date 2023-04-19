@@ -17,10 +17,12 @@ return new class extends Migration {
       $table->string('name')->nullable();
       $table->unsignedBigInteger('id_user')->nullable();
       $table->unsignedBigInteger('id_categoria')->nullable();
-      $table->double('unitary_value',8,2)->nullable();
+      $table->double('unitary_value', 8, 2)->nullable();
 
-      $table->foreign('id_user')->references('id')->on('users');
-      $table->foreign('id_categoria')->references('id')->on('categorias');
+      $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+
+      $table->foreign('id_categoria')->references('id')->on('categorias')->onDelete('cascade');
+
       $table->timestamps();
     });
   }
