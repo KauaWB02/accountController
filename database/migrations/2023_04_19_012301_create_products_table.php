@@ -12,12 +12,15 @@ return new class extends Migration {
    */
   public function up()
   {
-    Schema::create('users', function (Blueprint $table) {
+    Schema::create('products', function (Blueprint $table) {
       $table->id();
       $table->string('name')->nullable();
-      $table->string('email')->unique()->nullable();
-      $table->string('password')->nullable();
-      $table->boolean('isAdmin')->default(false)->nullable();
+      $table->unsignedBigInteger('id_user')->nullable();
+      $table->unsignedBigInteger('id_categoria')->nullable();
+      $table->double('unitary_value',8,2)->nullable();
+
+      $table->foreign('id_user')->references('id')->on('users');
+      $table->foreign('id_categoria')->references('id')->on('categorias');
       $table->timestamps();
     });
   }
@@ -29,6 +32,6 @@ return new class extends Migration {
    */
   public function down()
   {
-    Schema::dropIfExists('users');
+    Schema::dropIfExists('products');
   }
 };
