@@ -12,7 +12,7 @@
                         Quantidade de Produtos
                     </div>
                     <div class="text-black fw-bold">
-                        {{ $product }}
+                        {{ count($products) }}
                     </div>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                         Quantidade de Categorias
                     </div>
                     <div class="text-black fw-bold">
-                        {{ $categoria }}
+                        {{ count($categorias) }}
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                         Quantidade de Usuários
                     </div>
                     <div class="text-black fw-bold">
-                        {{ $user }}
+                        {{ count($users) }}
                     </div>
                 </div>
             </div>

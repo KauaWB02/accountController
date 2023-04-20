@@ -21,7 +21,7 @@
                     <label for="nome" class="text-black">Categoria</label>
                     <select class="form-select" name="categoria" aria-label="Default select example" required>
                         <option value="" selected>Selecione uma categoria</option>
-                        @foreach ($categorias as $categoria)
+                        @foreach ($listaCategorias as $categoria)
                             <option value="{{ $categoria->id }}">{{ $categoria->name }}</option>
                         @endforeach
                     </select>

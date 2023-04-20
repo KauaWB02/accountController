@@ -9,10 +9,6 @@ class loginController extends Controller
 {
   public function index()
   {
-    session_start();
-    if (isset($_SESSION['login'])) {
-      return redirect()->route('home-index');
-    }
     return view('login.index');
   }
 
@@ -31,5 +27,13 @@ class loginController extends Controller
       return view('login.index', ['msg' => 'E-mail ou senha incorretas!']);
     }
 
+  }
+
+  public function loggout()
+  {
+    session_start();
+    unset($_SESSION['login']);
+    session_destroy();
+    return redirect()->route('login-index');
   }
 }

@@ -49,6 +49,23 @@
                     </ul>
                 </div>
             </li>
+            @if ($isAdmin == true)
+                <li class="mb-1">
+                    <button class="btn btn-toggle d-inline-flex  align-items-center rounded border-0 collapsed"
+                        data-bs-toggle="collapse" data-bs-target="#usuario-collapse" aria-expanded="true">
+                        Usuário
+                    </button>
+                    <div class="collapse" id="usuario-collapse" style="">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 ps-4 small">
+                            <li><a href="{{ route('user-create') }}"
+                                    class="link-body-emphasis d-inline-flex text-decoration-none rounded">Criar</a></li>
+                            <li><a href="{{ route('user-index') }}"
+                                    class="link-body-emphasis d-inline-flex text-decoration-none rounded">Listar</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            @endif
             <li class="border-top my-3"></li>
             <li class="mb-1">
                 <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
@@ -57,8 +74,15 @@
                 </button>
                 <div class="collapse" id="account-collapse" style="">
                     <ul class="btn-toggle-nav list-unstyled fw-normal ps-4 pb-1 small">
-                        <li><a href="#"
-                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">Deslogar</a>
+                        <li>
+                            <form action="{{ route('login-loggout') }}" method="post">
+                                @csrf
+                                @method('POST')
+
+                                <button type="submit"
+                                    style="background-color: #212529 !important; border: none;">Deslogar</button>
+
+                            </form>
                         </li>
                     </ul>
                 </div>

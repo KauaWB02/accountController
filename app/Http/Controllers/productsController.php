@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Component;
 use App\Models\Categoria;
 use App\Models\Product;
 use Illuminate\Database\Query\JoinClause;
@@ -11,6 +12,7 @@ class productsController extends Controller
 {
   public function index()
   {
+    $isAdmin = Component::verifyIsAdmin();
     $listProduct = Product::leftJoin('users', 'products.id_user', '=', 'users.id')
       ->leftJoin('categorias', 'products.id_categoria', '=', 'categorias.id')
       ->get([
@@ -21,8 +23,8 @@ class productsController extends Controller
         'users.name AS name_user',
         'categorias.name AS name_categoria'
       ]);
-      
-    return view('product.index', ['products' => $listProduct]);
+
+    return view('product.index', compact('isAdmin', 'listProduct'));
   }
 
   public static function formatDate($data)
@@ -32,13 +34,17 @@ class productsController extends Controller
 
   public function create()
   {
+    $isAdmin = Component::verifyIsAdmin();
     $listaCategorias = Categoria::all();
 
-    return view('product.create', ['categorias' => $listaCategorias]);
+    return view('product.create', compact('isAdmin', 'listaCategorias'));
   }
 
   public function edit($id)
   {
+
+    $isAdmin = Component::verifyIsAdmin();
+
     $product = Product::leftJoin('categorias', 'products.id_categoria', '=', 'categorias.id')
       ->get([
         'products.id',
@@ -50,7 +56,7 @@ class productsController extends Controller
       ])->where('id', $id)->first();
 
     $listaCategorias = Categoria::all();
-    return view('product.edit', ['product' => $product, 'listaCategorias' => $listaCategorias]);
+    return view('product.edit', compact('isAdmin', 'product', 'listaCategorias'));
   }
 
   public function update(Request $request, $id)
@@ -67,7 +73,6 @@ class productsController extends Controller
 
   public function store(Request $request)
   {
-    session_start();
     $dados = [
       'name' => $request->nome,
       'id_user' => $_SESSION['login']['id'],

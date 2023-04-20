@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Component;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
 
@@ -9,37 +10,41 @@ class categoriasController extends Controller
 {
   public function index()
   {
-
-    $listCategorias = Categoria::leftJoin('users', 'categorias.id_user', '=', 'users.id')
+    $isAdmin = Component::verifyIsAdmin();
+    $listaCategorias = Categoria::leftJoin('users', 'categorias.id_user', '=', 'users.id')
       ->get([
         'categorias.id',
         'categorias.name AS name_categoria',
         'categorias.created_at',
         'users.name AS name_user',
       ]);
-    return view('categoria.index', ['listaCategorias' => $listCategorias]);
+    return view('categoria.index', compact('isAdmin', 'listaCategorias'));
   }
 
   public function create()
   {
-    return view('categoria.create');
+    $isAdmin = Component::verifyIsAdmin();
+    return view('categoria.create', compact('isAdmin'));
   }
 
   public function store(Request $request)
   {
-    session_start();
+
+
     $dados = [
       'name' => $request->nome,
       'id_user' => $_SESSION['login']['id'],
     ];
     Categoria::create($dados);
+
     return redirect()->route('categoria-create');
   }
 
   public function edit($id)
   {
+    $isAdmin = Component::verifyIsAdmin();
     $categoria = Categoria::where('id', $id)->first();
-    return view('categoria.edit', ['categoria' => $categoria]);
+    return view('categoria.edit', compact('isAdmin', 'categoria'));
   }
 
   public function update(Request $request, $id)
