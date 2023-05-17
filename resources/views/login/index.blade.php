@@ -10,25 +10,24 @@
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 
-<body class="bg-secondary">
-    <div class="container-fluid">
+<body class="bg-secondary d-flex" style="height: 100vh">
+    <div class="container-fluid d-flex">
 
-        <div
-            class="position-absolute top-50 start-50 translate-middle bg-white rounded-1 p-5 shadow-lg p-3 mb-5 rounded">
+        <div class="bg-dark m-auto w-50 p-5">
             @if (!empty($msg))
                 <div class="text-light bg-danger mb-3 p-2 rounded-2">{{ $msg }}</div>
             @endif
-            <h1>DeshBoard</h1>
+            <h1 class="text-white text-center">Controle de contas</h1>
             <form action="{{ route('login-store') }}" method="POST">
                 @csrf
 
                 <div class="form-group">
                     <div class="form-group">
-                        <label for="email" class="text-black">E-mail</label>
+                        <label for="email" class="text-white">E-mail</label>
                         <input type="text" class="form-control" name="email" id="email">
                     </div>
                     <div class="form-group">
-                        <label for="password" class="text-black">Senha</label>
+                        <label for="password" class="text-white">Senha</label>
                         <input type="password" class="form-control" name="password" id="password">
                     </div>
                     <div class="form-group mt-3">

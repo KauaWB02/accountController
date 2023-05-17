@@ -10,42 +10,24 @@
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 
-<body style="height: 100vh; display: flex; background-color: gray;">
+<body style="min-height: 100vh; display: flex; background-color: gray;">
 
-    <div class="flex-shrink-0 p-3" style="width: 280px; height: 100%; background-color: #212529; ">
+    <div class="flex-shrink-0 p-3" style="width: 280px; background-color: #212529; ">
         <a href="{{ route('home-index') }}"
             class="d-flex pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
 
-            <span class="fs-5 fw-semibold">DeshBoard</span>
+            <span class="fs-5 fw-semibold">Mago</span>
         </a>
         <ul class="list-unstyled ps-0">
             <li class="mb-1">
                 <button class="btn btn-toggle d-inline-flex  align-items-center rounded border-0 collapsed"
-                    data-bs-toggle="collapse" data-bs-target="#produto-collapse" aria-expanded="true">
-                    Produto
+                    data-bs-toggle="collapse" data-bs-target="#conta-collapse" aria-expanded="true">
+                    Conta
                 </button>
-
-                <div class="collapse" id="produto-collapse" style="">
+                <div class="collapse" id="conta-collapse" style="">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 ps-4 small">
-                        <li><a href="{{ route('product-create') }}"
-                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">Criar</a></li>
-                        <li><a href="{{ route('product-index') }}"
-                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">Listar</a></li>
-                    </ul>
-                </div>
-            </li>
-            <li class="mb-1">
-                <button class="btn btn-toggle d-inline-flex  align-items-center rounded border-0 collapsed"
-                    data-bs-toggle="collapse" data-bs-target="#categoria-collapse" aria-expanded="true">
-                    Categoria
-                </button>
-
-                <div class="collapse" id="categoria-collapse" style="">
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 ps-4 small">
-                        <li><a href="{{ route('categoria-create') }}"
-                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">Criar</a></li>
-                        <li><a href="{{ route('categoria-index') }}"
-                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">Listar</a></li>
+                        <li><a href="{{ route('account-create') }}"
+                            class="link-body-emphasis d-inline-flex text-decoration-none rounded">Criar</a></li>
                     </ul>
                 </div>
             </li>
@@ -67,25 +49,16 @@
                 </li>
             @endif
             <li class="border-top my-3"></li>
-            <li class="mb-1">
-                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-                    data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="true">
-                    Conta
-                </button>
-                <div class="collapse" id="account-collapse" style="">
-                    <ul class="btn-toggle-nav list-unstyled fw-normal ps-4 pb-1 small">
-                        <li>
-                            <form action="{{ route('login-loggout') }}" method="post">
-                                @csrf
-                                @method('POST')
+            <li class="mb-1" <li class="btn-toggle-nav list-unstyled fw-normal ps-4 pb-1 small">
+                <form action="{{ route('login-loggout') }}" method="post">
+                    @csrf
+                    @method('POST')
 
-                                <button type="submit"
-                                    style="background-color: #212529 !important; border: none;">Deslogar</button>
+                    <button type="submit" style="background-color: #212529 !important; border: none;">Deslogar</button>
 
-                            </form>
-                        </li>
-                    </ul>
-                </div>
+                </form>
+
+            </li>
             </li>
         </ul>
     </div>
