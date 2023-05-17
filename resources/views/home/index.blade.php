@@ -112,7 +112,7 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <form action="" method="POST">
+                                                <form action="{{ route('item-destroy', ['id' => $itens->id]) }}" method="post">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger"><svg

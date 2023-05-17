@@ -36,4 +36,6 @@ Route::middleware(['chack.login'])->prefix('/account/item')->group(function () {
   Route::post('/create/{id}', [itemController::class, 'store'])->name('item-store');
   Route::get('/edit/{id}', [itemController::class, 'edit'])->name('item-edit');
   Route::put('/{id}', [itemController::class, 'update'])->name('item-update');
+  Route::delete('/{id}', [itemController::class, 'destroy'])->name('item-destroy');
+
 });

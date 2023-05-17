@@ -44,4 +44,10 @@ class itemController extends Controller
     return redirect()->route('home-index');
   }
 
+  public function destroy($id)
+  {
+    Accounts_itens::where('id', $id)->delete();
+    return redirect()->route('home-index');
+  }
+
 }
