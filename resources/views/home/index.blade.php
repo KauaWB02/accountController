@@ -17,11 +17,11 @@
                         </div>
                         <div class="button" style="width: 25%">
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#modalItem{{$contador}}">
+                                data-bs-target="#modalItem{{ $contador }}">
                                 Adicionar item
                             </button>
-                            <div class="modal fade" id="modalItem{{$contador}}" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
+                            <div class="modal fade" id="modalItem{{ $contador }}" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -79,6 +79,15 @@
                                 Itens
                             </button>
                         </div>
+                        <div class="" style="width: 25%">
+                            <form action="{{ route('account-destroy', ['id' => $acount->id]) }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button class="btn btn-danger" type="submit">
+                                    Exlcuir
+                                </button>
+                            </form>
+                        </div>
                     </div>
                     <div class="collapse collapse-horizontal" id="collapseModelAccount{{ $contador }}">
                         <div class="card card-body w-100 bg-body-secondary">
@@ -103,7 +112,8 @@
                                             <td>{{ $itens->dinheiro }}</td>
                                             <td>{{ $itens->diamante }}</td>
                                             <td>
-                                                <a href="{{ route('item-edit', ['id' => $itens->id]) }}" class="btn btn-primary me-2">
+                                                <a href="{{ route('item-edit', ['id' => $itens->id]) }}"
+                                                    class="btn btn-primary me-2">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                         fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                                                         <path
@@ -112,7 +122,8 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <form action="{{ route('item-destroy', ['id' => $itens->id]) }}" method="post">
+                                                <form action="{{ route('item-destroy', ['id' => $itens->id]) }}"
+                                                    method="post">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger"><svg

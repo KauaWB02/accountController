@@ -32,4 +32,10 @@ class accountController extends Controller
     return redirect()->route('account-create');
 
   }
+
+  public function destroy($id)
+  {
+    Accounts::where('id', $id)->delete();
+    return redirect()->route('home-index');
+  }
 }
