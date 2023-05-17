@@ -18,8 +18,8 @@
                     <th scope="col">E-mail</th>
                     <th scope="col">Cargo</th>
                     <th scope="col">Data de criação</th>
-                    <th scope="col">.</th>
-                    <th scope="col">.</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -34,7 +34,7 @@
                         @else
                             <td>Usuário</td>
                         @endif
-                        <td>{{ App\Http\Controllers\productsController::formatDate($user->created_at) }}</td>
+                        <td>{{ App\Http\Component::formatDate($user->created_at) }}</td>
                         <td>
                             <a href="{{ route('user-edit', ['id' => $user->id]) }}" class="btn btn-primary me-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
