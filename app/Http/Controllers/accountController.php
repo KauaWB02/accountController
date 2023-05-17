@@ -21,16 +21,44 @@ class accountController extends Controller
   {
 
     $this->validate($request, [
+      'email' => 'required',
       'nome' => 'required'
     ], [
+        'email.required' => 'O campo "E-mail" é Obrigatório',
         'nome.required' => 'O campo "Nome" é Obrigatório'
       ]);
 
-    $dados = ['nome' => $request->nome];
+    $dados = [
+      'email' => $request->email,
+      'nome' => $request->nome,
+      'dinheiro' => $request->dinheiro,
+      'diamante' => $request->diamante,
+    ];
 
     Accounts::create($dados);
     return redirect()->route('account-create');
 
+  }
+
+  public function edit($id)
+  {
+    $isAdmin = Component::verifyIsAdmin();
+    $account = Accounts::where('id', $id)->first();
+    return view('account.edit', compact('isAdmin', 'account'));
+  }
+
+  public function update(Request $request, $id)
+  {
+
+    $dados = [
+      'email' => $request->email,
+      'nome' => $request->nome,
+      'dinheiro' => $request->dinheiro,
+      'diamante' => $request->diamante,
+    ];
+
+    Accounts::where('id', $id)->update($dados);
+    return redirect()->route('home-index');
   }
 
   public function destroy($id)

@@ -15,11 +15,8 @@ return new class extends Migration {
         Schema::create('accounts_itens', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_account')->nullable();
-            $table->string('nome')->nullable();
             $table->string('item')->nullable();
-            $table->string('qtd')->nullable();
-            $table->string('dinheiro')->nullable();
-            $table->string('diamante')->nullable();
+            $table->integer('qtd')->nullable();
             $table->timestamps();
             $table->foreign('id_account')->references('id')->on('accounts')->onDelete('cascade');
         });

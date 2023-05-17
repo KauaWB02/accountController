@@ -13,11 +13,8 @@ class itemController extends Controller
   {
     $dados = [
       'id_account' => (int) $id,
-      'nome' => $request->nome,
       'item' => $request->item,
       'qtd' => $request->qtd,
-      'dinheiro' => $request->dinheiro,
-      'diamante' => $request->diamante,
     ];
     Accounts_itens::create($dados);
     return redirect()->route('home-index');
@@ -33,11 +30,8 @@ class itemController extends Controller
   {
 
     $dados = [
-      'nome' => $request->nome,
       'item' => $request->item,
       'qtd' => $request->qtd,
-      'dinheiro' => $request->dinheiro,
-      'diamante' => $request->diamante,
     ];
 
     Accounts_itens::where('id', $id)->update($dados);

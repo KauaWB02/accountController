@@ -13,14 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('accounts', function (Blueprint $table) {
-            $table->id();
-            $table->string('email')->nullable();
-            $table->string('nome')->nullable();
-            $table->decimal('dinheiro',8,3)->nullable();
-            $table->integer('diamante')->nullable();
-            $table->timestamps();
-        });
+        //
     }
 
     /**
@@ -30,6 +23,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('account');
+        //
     }
 };

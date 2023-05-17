@@ -10,7 +10,10 @@ class Accounts extends Model
   use HasFactory;
   protected $fillable = [
     'id',
+    'email',
     'nome',
+    'dinheiro',
+    'diamante',
     'created_at',
   ];
 }

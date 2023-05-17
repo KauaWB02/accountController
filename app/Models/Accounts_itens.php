@@ -11,11 +11,8 @@ class Accounts_itens extends Model
   protected $fillable = [
     'id',
     'id_account',
-    'nome',
     'item',
     'qtd',
-    'dinheiro',
-    'diamante',
     'created_at',
   ];
 }
