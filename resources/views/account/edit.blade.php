@@ -23,13 +23,13 @@
                     <div class="form-group">
                         <label for="dinheiro" class="text-white mb-2 mt-2"
                             style="text-align: start !important">Dinheiro</label>
-                        <input type="number" class="form-control bg-white text-black" name="dinheiro" id="dinheiro"
+                        <input type="text" class="form-control bg-white text-black" name="dinheiro" id="dinheiro"
                             value="{{ $account->dinheiro }}">
                     </div>
                     <div class="form-group">
                         <label for="diamante" class="text-white mb-2 mt-2"
                             style="text-align: start !important">Diamante</label>
-                        <input type="number" class="form-control bg-white text-black" name="diamante" id="diamante"
+                        <input type="text" class="form-control bg-white text-black" name="diamante" id="diamante"
                             value="{{ $account->diamante }}">
                     </div>
                     <div class="form-group">

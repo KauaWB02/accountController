@@ -31,8 +31,8 @@ class accountController extends Controller
     $dados = [
       'email' => $request->email,
       'nome' => $request->nome,
-      'dinheiro' => $request->dinheiro,
-      'diamante' => $request->diamante,
+      'dinheiro' => (String)$request->dinheiro,
+      'diamante' => (String)$request->diamante,
     ];
 
     Accounts::create($dados);
@@ -53,8 +53,8 @@ class accountController extends Controller
     $dados = [
       'email' => $request->email,
       'nome' => $request->nome,
-      'dinheiro' => $request->dinheiro,
-      'diamante' => $request->diamante,
+      'dinheiro' => (String)$request->dinheiro,
+      'diamante' => (String)$request->diamante,
     ];
 
     Accounts::where('id', $id)->update($dados);

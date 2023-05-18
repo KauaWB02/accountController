@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('email')->nullable();
             $table->string('nome')->nullable();
-            $table->decimal('dinheiro',8,3)->nullable();
+            $table->string('dinheiro')->nullable();
             $table->integer('diamante')->nullable();
             $table->timestamps();
         });
