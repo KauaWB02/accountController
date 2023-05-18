@@ -55,12 +55,16 @@
                     data-bs-toggle="collapse" data-bs-target="#functions-collapse" aria-expanded="true">
                     Funções
                 </button>
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 ps-4 small">
-                        <li>
-                            <a id="scrollButton" class="link-body-emphasis d-inline-flex text-decoration-none rounded"
-                                style="cursor: pointer;">Descer</a>
-                        </li>
-                    </ul>
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 ps-4 small">
+                    <li>
+                        <a id="scrollButton" class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                            style="cursor: pointer;">Descer</a>
+                    </li>
+                    <li>
+                        <a id="modalId"  data-toggle="modal" data-target="#myModal" class="mt-2 link-body-emphasis d-inline-flex text-decoration-none rounded"
+                            style="cursor: pointer;">Abri itens</a>
+                    </li>
+                </ul>
             </li>
             <li class="border-top my-3"></li>
             <li class="mb-1" <li class="btn-toggle-nav list-unstyled fw-normal ps-4 pb-1 small">
@@ -73,10 +77,11 @@
                 </form>
 
             </li>
-            
+
         </ul>
     </div>
     @yield('content')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
     </script>
@@ -86,6 +91,14 @@
             body.scrollIntoView({
                 behavior: "smooth",
                 block: "end"
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $("#modalId").on("click", function() {
+                $("[id^='collapseModelAccount']").collapse("show");
             });
         });
     </script>
