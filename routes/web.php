@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [homeController::class, 'index'])->name('home-index')->middleware('chack.login');
 
+
 Route::prefix('/login')->group(function () {
   Route::get('/', [loginController::class, 'index'])->name('login-index');
   Route::post('/', [loginController::class, 'store'])->name('login-store');
@@ -31,6 +32,9 @@ Route::middleware(['chack.login'])->prefix('/account')->group(function () {
   Route::put('/{id}', [accountController::class, 'update'])->name('account-update');
   Route::delete('/{id}', [accountController::class, 'destroy'])->name('account-destroy');
 });
+
+
+
 
 Route::middleware(['chack.login'])->prefix('/account/item')->group(function () {
   Route::post('/create/{id}', [itemController::class, 'store'])->name('item-store');

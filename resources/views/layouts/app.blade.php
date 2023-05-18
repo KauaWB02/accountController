@@ -12,7 +12,7 @@
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 
-<body style="min-height: 100vh; display: flex; background-color: gray;">
+<body style="min-height: 100vh; display: flex; background-color: gray;" id="body">
 
     <div class="flex-shrink-0 p-3" style="width: 280px; background-color: #212529; ">
         <a href="{{ route('home-index') }}"
@@ -29,7 +29,7 @@
                 <div class="collapse" id="conta-collapse" style="">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 ps-4 small">
                         <li><a href="{{ route('account-create') }}"
-                            class="link-body-emphasis d-inline-flex text-decoration-none rounded">Criar</a></li>
+                                class="link-body-emphasis d-inline-flex text-decoration-none rounded">Criar</a></li>
                     </ul>
                 </div>
             </li>
@@ -50,6 +50,18 @@
                     </div>
                 </li>
             @endif
+            <li class="mb-1">
+                <button class="btn btn-toggle d-inline-flex  align-items-center rounded border-0 collapsed  fw-bolder"
+                    data-bs-toggle="collapse" data-bs-target="#functions-collapse" aria-expanded="true">
+                    Funções
+                </button>
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 ps-4 small">
+                        <li>
+                            <a id="scrollButton" class="link-body-emphasis d-inline-flex text-decoration-none rounded"
+                                style="cursor: pointer;">Descer</a>
+                        </li>
+                    </ul>
+            </li>
             <li class="border-top my-3"></li>
             <li class="mb-1" <li class="btn-toggle-nav list-unstyled fw-normal ps-4 pb-1 small">
                 <form action="{{ route('login-loggout') }}" method="post">
@@ -61,12 +73,21 @@
                 </form>
 
             </li>
-            </li>
+            
         </ul>
     </div>
     @yield('content')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
+    </script>
+    <script>
+        document.getElementById("scrollButton").addEventListener("click", function() {
+            let body = document.getElementById('body');
+            body.scrollIntoView({
+                behavior: "smooth",
+                block: "end"
+            });
+        });
     </script>
 </body>
 
