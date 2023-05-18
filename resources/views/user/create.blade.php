@@ -3,7 +3,6 @@
 
 
 @section('content')
-    <div class="container mt-5 mb-5 rounded  w-50 bg-light">
         <form action="{{ route('user-store') }}" method="POST">
           @csrf
             <div class="form-group d-flex flex-column justify-content-between mt-15">
@@ -30,5 +29,4 @@
                 <button type="submit" class="btn btn-primary w-25 ml-5" style="margin-left: 25% ;">Criar</button>
             </div>
         </form>
-    </div>
 @endsection

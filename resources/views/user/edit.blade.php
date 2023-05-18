@@ -3,7 +3,6 @@
 
 
 @section('content')
-    <div class="container mt-5 mb-5 rounded  w-50 bg-light">
         <form action="{{ route('user-update', ['id' => $user->id]) }}" method="POST">
             @csrf
             @method('PUT')
@@ -41,5 +40,4 @@
                 <button type="submit" class="btn btn-primary w-25 ml-5" style="margin-left: 25% ;">Criar</button>
             </div>
         </form>
-    </div>
 @endsection

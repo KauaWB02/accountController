@@ -3,7 +3,6 @@
 @section('title', 'Edição de conta')
 
 @section('content')
-    <div class="container-fluid">
         <form action="{{ route('account-update', ['id' => $account->id]) }}" method="post">
             @csrf
             @method('put')
@@ -40,5 +39,4 @@
                 </form>
             </div>
         </form>
-    </div>
 @endsection
