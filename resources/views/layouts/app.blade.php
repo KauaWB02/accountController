@@ -62,7 +62,7 @@
                     </li>
                     <li>
                         <a id="modalId"  data-toggle="modal" data-target="#myModal" class="mt-2 link-body-emphasis d-inline-flex text-decoration-none rounded"
-                            style="cursor: pointer;">Abri itens</a>
+                            style="cursor: pointer;">Abrir Itens</a>
                     </li>
                 </ul>
             </li>
