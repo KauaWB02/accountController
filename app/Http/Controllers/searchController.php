@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Accounts_itens;
+use DB;
 use Illuminate\Http\Request;
 
 class searchController extends Controller
@@ -11,8 +12,8 @@ class searchController extends Controller
   {
     $item = $request->input('item');
     
-    $quantideItem = Accounts_itens::where('item',$item)->sum('qtd');
+    $item = Accounts_itens::where('item',$item)->groupBy('item')->select('item', DB::raw('SUM(qtd) as total'))->first();
 
-    return response()->json(['mensagem' => 'Requisição AJAX bem-sucedida','quantity'=>$quantideItem]);
+    return response()->json(['mensagem' => 'Requisição AJAX bem-sucedida','item'=>$item->item,'quantity'=>$item->total]);
   }
 }
