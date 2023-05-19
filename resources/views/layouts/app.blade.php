@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <script src="https://kit.fontawesome.com/39f9864021.js" crossorigin="anonymous"></script>
@@ -13,7 +14,8 @@
 </head>
 
 <body style="min-height: 100vh; background-color: gray;" id="body">
-    <div class="flex-shrink-0 p-3" style="width: 280px; background-color: #212529; position: fixed; height: 100%; float: left; ">
+    <div class="flex-shrink-0 p-3"
+        style="width: 280px; background-color: #212529; position: fixed; height: 100%; float: left; ">
         <a href="{{ route('home-index') }}"
             class="d-flex pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
 
@@ -60,7 +62,8 @@
                             style="cursor: pointer;">Descer</a>
                     </li>
                     <li>
-                        <a id="modalId"  data-toggle="modal" data-target="#myModal" class="mt-2 link-body-emphasis d-inline-flex text-decoration-none rounded"
+                        <a id="modalId" data-toggle="modal" data-target="#myModal"
+                            class="mt-2 link-body-emphasis d-inline-flex text-decoration-none rounded"
                             style="cursor: pointer;">Abrir Itens</a>
                     </li>
                 </ul>
@@ -104,6 +107,55 @@
                 $("[id^='collapseModelAccount']").collapse("show");
             });
         });
+    </script>
+
+    <script>
+        function teste() {
+            const item = document.getElementById('item-search').value;
+            const resultHtml = document.getElementById('result-search');
+
+            if(!item){
+                resultHtml.innerHTML = '';
+                return;
+            }
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            
+            $.ajax({
+                url: `/search`,
+                type: 'POST',
+                data: {
+                    item: item
+                },
+                success: function(response) {
+                    if(response.quantity > 0){
+                        resultHtml.innerHTML += `
+                        <div class="card border-info mb-3 " style="max-width: 10rem;">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">${item}</h5>
+                                <p class="card-text">${response.quantity}</p>
+                            </div>
+                        </div>`
+                    }else{
+                        resultHtml.innerHTML += `
+                        <div class="card border-danger mb-3 " style="max-width: 10rem;">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">${item}</h5>
+                                <p class="card-text">${response.quantity}</p>
+                            </div>
+                        </div>`
+                    }
+                },
+                error: function(xhr) {
+                    // Lógica para tratar a resposta da requisição com erro
+                    console.log(xhr.responseText);
+                }
+            });
+        }
     </script>
 </body>
 

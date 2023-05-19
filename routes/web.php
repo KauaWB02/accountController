@@ -4,10 +4,12 @@ use App\Http\Controllers\accountController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\itemController;
 use App\Http\Controllers\loginController;
+use App\Http\Controllers\searchController;
 use App\Http\Controllers\usersController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [homeController::class, 'index'])->name('home-index')->middleware('chack.login');
+Route::post('/search', [searchController::class, 'search']);
 
 
 Route::prefix('/login')->group(function () {

@@ -3,7 +3,16 @@
 @section('title', 'Home')
 
 @section('content')
-    <div class="d-flex flex-column justify-content-center p-5">
+    <div class="d-flex flex-column justify-content-center" style="padding-left: 5rem;
+    padding-right: 5rem;">
+        <div class="form-group mb-5 mt-3">
+            <label for="item-search" class="text-white mb-2  mt-2" style="text-align: start !important">Pesquisa</label>
+            <input type="text" onchange="teste()" class="form-control bg-white text-black" name="item-search"
+                id="item-search" required>
+        </div>
+        <div class="d-flex flex-row flex-wrap" id="result-search">
+
+        </div>
         @foreach ($accountsItens as $acount)
             <div class="box mb-5 bg-dark-subtle rounded-3">
                 <div class="row p-2">
