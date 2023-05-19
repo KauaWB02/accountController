@@ -134,7 +134,7 @@
                 success: function(response) {
                     if(response.quantity > 0){
                         resultHtml.innerHTML += `
-                        <div class="card border-info mb-3 " style="max-width: 10rem;">
+                        <div class="card border-info mb-3 me-2" style="max-width: 10rem;">
                             <div class="card-body text-center">
                                 <h5 class="card-title">${item}</h5>
                                 <p class="card-text">${response.quantity}</p>
@@ -142,7 +142,7 @@
                         </div>`
                     }else{
                         resultHtml.innerHTML += `
-                        <div class="card border-danger mb-3 " style="max-width: 10rem;">
+                        <div class="card border-danger mb-3 me-2" style="max-width: 10rem;">
                             <div class="card-body text-center">
                                 <h5 class="card-title">${item}</h5>
                                 <p class="card-text">${response.quantity}</p>
